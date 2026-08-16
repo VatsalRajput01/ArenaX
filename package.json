@@ -1,0 +1,18 @@
+{
+  "name": "arenax",
+  "version": "1.0.0",
+  "description": "Real-time multiplayer board-game platform — server-authoritative architecture",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node --watch server/server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1",
+    "uuid": "^11.1.0"
+  }
+}

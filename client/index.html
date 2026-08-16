@@ -1,0 +1,541 @@
+<!-- client/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <!-- Progressive Web App and Mobile Theming -->
+  <meta name="theme-color" content="#000000" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="ArenaX" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- Primary Meta Tags (Extreme SEO Optimization) -->
+  <title>ArenaX | Real-Time Multiplayer Tic Tac Toe</title>
+  <meta name="title" content="ArenaX — Real-Time Multiplayer Tic Tac Toe" />
+  <meta name="description"
+    content="Experience enterprise-grade, real-time multiplayer Tic Tac Toe. Secure rooms, instant latency, and competitive gameplay." />
+  <meta name="keywords"
+    content="Tic Tac Toe, multiplayer game, board game online, real-time gaming, ArenaX, Vatsal Rajput, play tic tac toe with friends" />
+  <meta name="author" content="Vatsal Rajput, darbarvatsal16@gmail.com" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+
+  <!-- Canonical URL to prevent duplicate content penalties -->
+  <link rel="canonical" href="https://arenax.game/" />
+
+  <!-- Open Graph / Facebook / WhatsApp Integration -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ArenaX" />
+  <meta property="og:url" content="https://arenax.game/" />
+  <meta property="og:title" content="ArenaX — Premium Multiplayer Match" />
+  <meta property="og:description"
+    content="You have been challenged to a real-time multiplayer match. Click the link to securely join the room and start playing." />
+  <meta property="og:image" content="https://arenax.game/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="ArenaX Multiplayer Tic Tac Toe Board" />
+
+  <!-- Twitter Card Integration -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://arenax.game/" />
+  <meta property="twitter:title" content="ArenaX — Premium Multiplayer Match" />
+  <meta property="twitter:description"
+    content="You have been challenged to a real-time multiplayer match. Click the link to securely join the room and start playing." />
+  <meta property="twitter:image" content="https://arenax.game/img/og-image.png" />
+
+  <!-- Structured Data (JSON-LD) for Advanced Google Indexing -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "ArenaX",
+    "url": "https://arenax.game/",
+    "description": "Enterprise-grade, real-time multiplayer Tic Tac Toe with secure rooms and instant latency.",
+    "genre": "Board Game",
+    "playMode": "MultiPlayer",
+    "applicationCategory": "Game",
+    "operatingSystem": "WebBrowser",
+    "author": {
+      "@type": "Person",
+      "name": "Vatsal Rajput",
+      "email": "darbarvatsal16@gmail.com"
+    }
+  }
+  </script>
+
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23f1f5f9'/><stop offset='100%25' stop-color='%237000ff'/></linearGradient></defs><path d='M50 5 L90 27.5 V72.5 L50 95 L10 72.5 V27.5 Z' fill='none' stroke='url(%23g)' stroke-width='8'/><path d='M35 35 L65 65 M65 35 L35 65' stroke='white' stroke-width='8' stroke-linecap='round'/></svg>"
+    type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Modular CSS Stylesheets -->
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/game.css" />
+  <link rel="stylesheet" href="/css/chat.css" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQ83RHMQYV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-XQ83RHMQYV');
+  </script>
+
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script type="module" src="/js/app.js" defer></script>
+</head>
+
+<body class="premium-dark">
+
+  <header class="site-header glass">
+    <div class="logo-container">
+      <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f1f5f9" />
+            <stop offset="100%" stop-color="#7000ff" />
+          </linearGradient>
+          <filter id="neonGlow">
+            <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <path d="M50 5 L90 27.5 V72.5 L50 95 L10 72.5 V27.5 Z" fill="none" stroke="url(#logoGrad)" stroke-width="4"
+          filter="url(#neonGlow)" />
+        <path d="M35 35 L65 65 M65 35 L35 65" stroke="white" stroke-width="6" stroke-linecap="round" />
+      </svg>
+      <h1 class="logo-text">Arena<span class="accent-x">X</span></h1>
+    </div>
+  </header>
+
+  <!-- Network Latency Indicator -->
+  <div class="ping-badge glass-dark hidden" id="pingBadge">
+    <svg id="wifiIcon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+      <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+      <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+      <line x1="12" y1="20" x2="12.01" y2="20"></line>
+    </svg>
+    <span id="pingText" class="premium-input"
+      style="padding: 0; font-size: 0.85rem; letter-spacing: 1px; color: inherit;">-- ms</span>
+  </div>
+
+  <main class="container">
+
+    <!-- Main Menu Selection Screen -->
+    <section class="view-panel active" id="mainMenuPanel"
+      style="background: transparent; border: none; box-shadow: none;">
+      <div class="panel-content text-center pos-rel menu-panel-content">
+
+        <div id="menuViewDefault" class="menu-transition-view active-view">
+          <h2 class="title-lg mb-30">Select Game Mode</h2>
+          <div class="lobby-controls flex-col gap-15">
+            <button class="btn btn-glow-cyan menu-btn" id="btnPlayComputer" type="button">Play with Computer</button>
+            <button class="btn btn-glow-cyan menu-btn" id="btnPlayLocal" type="button">Pass & Play</button>
+            <button class="btn btn-glow-purple menu-btn" id="btnPlayOnline" type="button">Online Match</button>
+          </div>
+        </div>
+
+        <!-- AI Difficulty Selection Screen -->
+        <div id="menuViewAI" class="menu-transition-view hidden-view-right">
+          <h2 class="title-lg mb-30">Select AI Core</h2>
+          <div class="lobby-controls flex-col gap-15">
+
+            <button class="btn btn-glow-cyan menu-btn diff-btn flex-center gap-10" data-diff="easy">
+              <span class="diff-icon"></span> Easy (Beginner)
+            </button>
+
+            <button class="btn btn-glow-cyan menu-btn diff-btn flex-center gap-10" data-diff="medium">
+              <span class="diff-icon"></span> Medium (Advanced)
+            </button>
+
+            <button class="btn btn-glow-cyan menu-btn diff-btn flex-center gap-10" data-diff="hard">
+              <span class="diff-icon"></span> Hard (Unbeatable)
+            </button>
+
+            <button class="btn-back" id="btnBackFromAI" type="button">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+              Back to Menu
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Online Multiplayer Lobby Screen -->
+    <section class="view-panel glass-card hidden" id="lobbyPanel">
+      <div class="panel-content">
+        <h2 class="title-lg">Online Lobby</h2>
+        <p class="subtitle">Enter room code or create a secure room.</p>
+
+        <div class="lobby-controls">
+
+          <!-- Room Code Input Fields -->
+          <div class="code-entry-container" id="codeEntryContainer">
+            <input type="text" class="code-box" maxlength="1" autocomplete="off" />
+            <input type="text" class="code-box" maxlength="1" autocomplete="off" />
+            <input type="text" class="code-box" maxlength="1" autocomplete="off" />
+            <input type="text" class="code-box" maxlength="1" autocomplete="off" />
+            <input type="text" class="code-box" maxlength="1" autocomplete="off" />
+            <input type="text" class="code-box" maxlength="1" autocomplete="off" />
+          </div>
+
+          <!-- Visual Divider -->
+          <div class="lobby-separator">
+            <span>Or Create Room</span>
+          </div>
+
+          <!-- Create Room Button -->
+          <button class="btn btn-glow-cyan flex-center gap-10 w-100" id="btnCreateRoom" type="button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span style="font-weight: 700; letter-spacing: 1px;">Create New Room</span>
+          </button>
+
+          <!-- Navigation Button -->
+          <button class="btn-back mt-25 w-100" id="btnBackToMenu" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Back to Menu
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Room Waiting Area Screen -->
+    <section class="view-panel glass-card hidden" id="roomPanel">
+      <div class="panel-content">
+
+        <div class="text-center mb-20">
+          <label class="section-label" style="letter-spacing: 2px;">Room Code</label>
+          <div class="flex-center gap-15 mt-10">
+            <!-- Room Code Display -->
+            <h2 class="room-code-display" id="roomCodeDisplay" style="margin: 0; font-size: 2.5rem;">------</h2>
+            <div class="flex-center gap-8">
+
+              <!-- Utility Action Buttons -->
+              <button class="btn-minimal" id="btnCopyCode" title="Copy Code">
+                <svg class="svg-block" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f1f5f9"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+
+              <button class="btn-minimal" id="btnShareCode" title="Share Link">
+                <svg class="svg-block" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f1f5f9"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="18" cy="5" r="3"></circle>
+                  <circle cx="6" cy="12" r="3"></circle>
+                  <circle cx="18" cy="19" r="3"></circle>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+              </button>
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="player-manifest">
+          <h3 class="section-label">Players in Lobby</h3>
+          <ul class="player-list" id="playerList"></ul>
+        </div>
+
+        <div class="room-footer mt-25">
+          <button class="btn btn-action" id="btnReady" type="button" disabled>
+            Waiting<span class="loading-dots"></span>
+          </button>
+          <p class="transmission-hint" id="roomHint">
+            Waiting for Second Player to Join.
+          </p>
+
+          <button class="btn-back mt-15 w-100" id="btnLeaveLobby" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Back to Menu
+          </button>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Game Board Screen -->
+    <section class="view-panel hidden" id="gamePanel">
+
+      <!-- Player Profiles and Status HUD -->
+      <div class="combat-hud">
+
+        <!-- Player 1 Profile -->
+        <div class="player-profile" id="p1Profile">
+          <div class="speech-bubble hidden" id="p1Bubble"></div>
+          <div class="avatar-ring" id="p1Ring">
+            <div class="avatar glass-sm glow-cyan" id="p1Avatar">X</div>
+          </div>
+          <div class="player-info">
+            <span class="player-name" id="p1Name">Player 1</span>
+            <span class="player-role" id="p1Role">You</span>
+          </div>
+        </div>
+
+        <!-- Player 2 Profile -->
+        <div class="player-profile" id="p2Profile">
+          <div class="speech-bubble hidden" id="p2Bubble"></div>
+          <div class="avatar-ring" id="p2Ring">
+            <div class="avatar glass-sm glow-pink" id="p2Avatar">O</div>
+          </div>
+          <div class="player-info">
+            <span class="player-name" id="p2Name">Player 2</span>
+            <span class="player-role" id="p2Role">Opponent</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Game Board Area -->
+      <div class="grid-container flex-col align-center mt-10">
+
+        <!-- Match Scoreboard -->
+        <div class="central-scoreboard">
+          <span class="score-digit" id="p1Score">0</span>
+          <span class="score-divider">:</span>
+          <span class="score-digit" id="p2Score">0</span>
+        </div>
+
+        <!-- Rematch Request Banner -->
+        <div class="rematch-banner hidden" id="rematchBanner">
+          <p id="rematchStatusText" class="rematch-text">Opponent Wants a Rematch!</p>
+          <button class="btn btn-glow-purple" id="btnInGameRematch" type="button">Accept Rematch</button>
+        </div>
+
+        <div class="game-board-grid" id="gameBoard">
+          <button class="grid-cell glass-cell" data-index="0"></button>
+          <button class="grid-cell glass-cell" data-index="1"></button>
+          <button class="grid-cell glass-cell" data-index="2"></button>
+          <button class="grid-cell glass-cell" data-index="3"></button>
+          <button class="grid-cell glass-cell" data-index="4"></button>
+          <button class="grid-cell glass-cell" data-index="5"></button>
+          <button class="grid-cell glass-cell" data-index="6"></button>
+          <button class="grid-cell glass-cell" data-index="7"></button>
+          <button class="grid-cell glass-cell" data-index="8"></button>
+        </div>
+      </div>
+
+      <!-- Floating Chat Interface -->
+      <div class="floating-chat-dock" id="chatContainer">
+
+        <!-- Chat Toggle Button -->
+        <button class="btn-chat-toggle" id="btnToggleChat" aria-label="Open ArenaX Communications" aria-expanded="false"
+          aria-controls="chatPanel">
+          <svg class="chat-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6.5 4.5h11a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3h-5.2L8.8 19.5v-3H6.5a3 3 0 0 1-3-3v-6a3 3 0 0 1 3-3Z" />
+            <path d="M7.5 10.5h1.5" />
+            <path d="M10.5 10.5h3" />
+            <path d="M15 10.5h1.5" />
+          </svg>
+        </button>
+
+        <div class="chat-panel glass-premium hidden" id="chatPanel">
+          <div class="chat-header">
+            <span class="pulse-dot"></span> Live Chat
+            <!-- Close Chat Button -->
+            <button class="btn-close-chat flex-center" id="btnCloseChat" title="Close Chat">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+          <div class="chat-messages" id="chatMessages">
+            <div class="chat-message system">Chat Connected.</div>
+          </div>
+          <!-- Typing Indicator Animation -->
+          <div class="typing-indicator-container" id="typingIndicator">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+          </div>
+
+          <div class="emoji-picker glass-premium hidden" id="emojiPicker">
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f60a/512.webp" alt="happy" class="emoji-opt"
+              data-code=":happy:" draggable="false" />
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f602/512.webp" alt="laugh" class="emoji-opt"
+              data-code=":laugh:" draggable="false" />
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f60e/512.webp" alt="cool" class="emoji-opt"
+              data-code=":cool:" draggable="false" />
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f621/512.webp" alt="angry" class="emoji-opt"
+              data-code=":angry:" draggable="false" />
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f62d/512.webp" alt="cry" class="emoji-opt"
+              data-code=":cry:" draggable="false" />
+          </div>
+
+          <div class="chat-input-area">
+            <!-- Emoji Picker Toggle Button -->
+            <button class="btn-emoji glass-sm" id="btnEmojiToggle" disabled title="Emojis">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+              </svg>
+            </button>
+            <input type="text" id="chatInput" class="glass-input" placeholder="Type a message..." maxlength="80"
+              autocomplete="off" disabled />
+            <!-- Send Message Button -->
+            <button class="btn btn-glow-cyan flex-center" id="btnSendChat" disabled title="Send Message"
+              style="padding: 10px 16px !important;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none; margin-left: -2px;">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leave Match Button -->
+      <button class="btn-leave-match" id="btnLeaveMatch" title="Leave Match">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f1f5f9" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+          <polyline points="10 17 5 12 10 7"></polyline>
+          <line x1="15" y1="12" x2="5" y2="12"></line>
+        </svg>
+      </button>
+
+    </section>
+  </main>
+
+  <!-- Player Name Configuration Modal -->
+  <div class="modal-overlay hidden" id="editNameModal">
+    <div class="modal-card glass-premium pos-rel">
+      <button class="modal-close" id="btnCloseEditName">&times;</button>
+
+      <div class="modal-header">
+        <h2>Player Name</h2>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="modalUsernameInput" class="glass-input premium-input w-100 text-center" maxlength="12"
+          placeholder="Enter Your Name" autocomplete="off" />
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-glow-cyan w-100" id="btnSaveModalName" type="button">
+          Save Identity
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Match Conclusion and Summary Modal -->
+  <div class="modal-overlay hidden" id="matchSummaryModal">
+    <div class="modal-card glass-premium" style="max-width: 440px; width: 92%; padding: 35px 20px;">
+
+      <div class="modal-header mb-15">
+        <h2 id="summaryTitle"
+          style="font-size: clamp(2rem, 6vw, 2.8rem); font-weight: 800; letter-spacing: 1px; margin: 0;">Victory!</h2>
+      </div>
+
+      <div class="modal-body mt-20 mb-30 w-100">
+        <div class="flex-center w-100" style="justify-content: center; gap: 5px;">
+
+          <!-- Player 1 Profile Display -->
+          <div class="flex-col align-center pos-rel" style="flex: 1;">
+            <div class="avatar glass-sm glow-cyan mb-10" id="summaryP1Avatar"
+              style="width: clamp(55px, 15vw, 70px); height: clamp(55px, 15vw, 70px); font-size: clamp(1.8rem, 5vw, 2.5rem); display: flex; align-items: center; justify-content: center; border: 2px solid rgba(0, 242, 255, 0.4); box-shadow: 0 0 20px rgba(0, 242, 255, 0.2); border-radius: 50%;">
+              X</div>
+            <span class="player-name" id="summaryP1Name"
+              style="font-size: clamp(0.9rem, 3vw, 1.1rem); font-weight: 700; color: #e2e8f0; text-transform: capitalize; max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">You</span>
+            <span class="status-msg hidden" id="summaryP1Msg">Sorry I'm Busy! Can't Play Right Now.</span>
+          </div>
+
+          <!-- Final Score Display -->
+          <div class="flex-center"
+            style="flex: 0 0 auto; font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 800; font-family: monospace; text-shadow: 0 4px 15px rgba(0,0,0,0.5); padding: 0 10px;">
+            <span id="summaryP1Score" style="color: #f1f5f9;">0</span>
+            <span
+              style="color: rgba(255,255,255,0.15); margin: 0 clamp(8px, 2vw, 15px); font-size: clamp(2rem, 6vw, 2.5rem);">:</span>
+            <span id="summaryP2Score" style="color: #f1f5f9;">0</span>
+          </div>
+
+          <!-- Player 2 Profile Display -->
+          <div class="flex-col align-center pos-rel" style="flex: 1;">
+            <div class="avatar glass-sm mb-10" id="summaryP2Avatar"
+              style="width: clamp(55px, 15vw, 70px); height: clamp(55px, 15vw, 70px); font-size: clamp(1.8rem, 5vw, 2.5rem); display: flex; align-items: center; justify-content: center; border: 2px solid rgba(139, 92, 246, 0.5); box-shadow: 0 0 20px rgba(139, 92, 246, 0.15); border-radius: 50%; color: #f1f5f9;">
+              O</div>
+            <span class="player-name" id="summaryP2Name"
+              style="font-size: clamp(0.9rem, 3vw, 1.1rem); font-weight: 700; color: #e2e8f0; text-transform: capitalize; max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Opponent</span>
+            <span class="status-msg hidden" id="summaryP2Msg">Sorry I'm Busy! Can't Play Right Now.</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Post-Match Action Buttons -->
+      <div
+        style="display: flex; flex-direction: column; gap: 12px; width: 100%; padding: 0 10px; box-sizing: border-box;">
+
+        <!-- Primary Action Button -->
+        <button class="btn btn-glow-purple" id="btnSummaryRematch" type="button"
+          style="width: 100%; font-size: 1.1rem; padding: 16px; border-radius: 12px; letter-spacing: 0.5px; font-weight: 700;">Request
+          Rematch</button>
+
+        <!-- Secondary Action Button -->
+        <button class="btn btn-glass" id="btnSummaryLeave" type="button"
+          style="width: 100%; font-size: 1rem; padding: 14px; border-radius: 12px; color: #94a3b8; border: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.2);">Leave
+          Room</button>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Leave Match Confirmation Modal -->
+  <div class="modal-overlay hidden" id="leaveConfirmModal">
+    <div class="modal-card glass-premium" style="max-width: 350px;">
+      <div class="modal-header">
+        <h2 style="color: #FF0055; font-size: 1.6rem; white-space: nowrap;">Leave Game?</h2>
+      </div>
+      <div class="modal-body">
+        <p class="modal-msg" style="font-size: 0.95rem; color: #cbd5e1;">Are you sure you want to leave? The current
+          match will be lost.</p>
+      </div>
+      <div class="modal-actions flex-center gap-15 mt-20 w-100">
+        <button class="btn btn-glass flex-1 p-12" id="btnCancelLeave" type="button">Cancel</button>
+        <button class="btn btn-glass btn-danger-outline flex-1 p-12" id="btnConfirmLeave" type="button">Yes,
+          Leave</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

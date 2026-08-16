@@ -1,0 +1,24 @@
+{
+    "name": "ArenaX Multiplayer Games",
+    "short_name": "ArenaX",
+    "description": "Enterprise-grade real-time multiplayer board games platform.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#000000",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23f1f5f9'/><stop offset='100%25' stop-color='%237000ff'/></linearGradient></defs><path d='M50 5 L90 27.5 V72.5 L50 95 L10 72.5 V27.5 Z' fill='none' stroke='url(%23g)' stroke-width='8'/><path d='M35 35 L65 65 M65 35 L35 65' stroke='white' stroke-width='8' stroke-linecap='round'/></svg>",
+            "sizes": "192x192",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23f1f5f9'/><stop offset='100%25' stop-color='%237000ff'/></linearGradient></defs><path d='M50 5 L90 27.5 V72.5 L50 95 L10 72.5 V27.5 Z' fill='none' stroke='url(%23g)' stroke-width='8'/><path d='M35 35 L65 65 M65 35 L35 65' stroke='white' stroke-width='8' stroke-linecap='round'/></svg>",
+            "sizes": "512x512",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ]
+}
