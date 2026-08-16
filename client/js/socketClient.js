@@ -4,7 +4,7 @@ import * as Events from '/shared/events.js';
 // Define Backend URL dynamically
 const BACKEND_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? 'http://localhost:3000'
-  : 'https://YOUR-RENDER-URL.onrender.com'; // TO-DO: Replace with your actual Render URL after deployment
+  : 'https://arenax-tt62.onrender.com';
 
 // Connect explicitly to the backend URL
 const socket = io(BACKEND_URL);
